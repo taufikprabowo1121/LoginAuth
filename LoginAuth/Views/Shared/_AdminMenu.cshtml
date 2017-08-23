@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNet.Identity
+<ul class="sidebar-menu" data-widget="tree">
+    <li class="header">Do Action Here</li>
+    @if (ViewBag.show == true)
+    {
+       <li class="active"> @(Html.ActionLink("Manage User", "index", "User", new { id = 1 }, new { @class = "fa fa-link" }))</li>
+    <li>@(Html.ActionLink("Manage Upload","DetailManage","Manage", new { id = User.Identity.GetUserId() }, new { @class = "fa fa-link" }))</li>
+        <li>@Html.ActionLink(" Role", "Index", "Role",new { id = 1}, new { @class = "fa fa-link" })</li>
+    }
+    else
+    {
+
+    }
+@if (ViewBag.don == "kosong")
+{
+    if (ViewBag.show == false)
+    {
+        <li>@(Html.ActionLink("File Upload", "FileUpload","Manage", new { id = 1 }, new { @class = "fa fa-link" }))</li>
+    }
+
+
+}
+else
+{
+
+    if (ViewBag.admin == "isAdmin")
+    {
+        <li class="active"> @(Html.ActionLink("Manage User", "index", "User", new { id = 1 }, new { @class = "fa fa-link" }))</li>
+        <li>@(Html.ActionLink("Manage Upload", "DetailManage", "Manage", new { id = User.Identity.GetUserId() }, new { @class = "fa fa-link" }))</li>
+        <li>@Html.ActionLink(" Role", "Index", "Role", new { id = 1 }, new { @class = "fa fa-link" })</li>
+    }
+    else
+    {
+    <li>@(Html.ActionLink("Manage Upload", "DetailManage", "Manage", new { id = User.Identity.GetUserId() }, new { @class = "fa fa-link" }))</li>
+    }
+}
+
+</ul>
+

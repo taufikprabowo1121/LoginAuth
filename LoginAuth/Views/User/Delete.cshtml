@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+
+}
+
+@foreach (var item in ViewBag.del)
+{
+<h2>Delete</h2>
+<h1>Aare You Sure Want To Delete This Data</h1>
+<p>UserName : @item.UserName</p>
+<p>Email : @item.Email</p>
+<p>Password : @item.PasswordHash</p>
+
+
+
+
+using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" value="@item.Id" />
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-danger btn-md" /> 
+  @(Html.ActionLink("Back To List", "index", new { id = 1 }, new { @class = "btn btn-primary btn-md" }))
+    </div>
+}
+}
